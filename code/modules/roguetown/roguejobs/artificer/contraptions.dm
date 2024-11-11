@@ -18,6 +18,35 @@
 	var/misfiring = FALSE
 	obj_flags_ignore = TRUE
 
+/obj/item/contraption/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.5,
+"sx" = -6,
+"sy" = -2,
+"nx" = 9,
+"ny" = -1,
+"wx" = -6,
+"wy" = -1,
+"ex" = -2,
+"ey" = -3,
+"northabove" = 0,
+"southabove" = 1,
+"eastabove" = 1,
+"westabove" = 0,
+"nturn" = 21,
+"sturn" = -18,
+"wturn" = -18,
+"eturn" = 21,
+"nflip" = 0,
+"sflip" = 8,
+"wflip" = 8,
+"eflip" = 0)
+			if("onbelt")
+				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+
 /obj/item/contraption/examine(mob/user)
 	. = ..()
 	if(!istype(user, /mob/living))
@@ -28,7 +57,7 @@
 		. += span_warning("The contraption has [current_charge] charges left.")
 	if(!current_charge)
 		. += span_warning("This contraption requires a new [initial(accepted_power_source.name)] to function.")
-	if(misfire_chance)
+	if(misfire_chance && skill < 6)
 		if(skill > 2)
 			. += span_warning("You calculate this contraptions chance of failure to be anywhere between [max(0, (misfire_chance - skill) - rand(4))]% and [max(2, (misfire_chance - skill) + rand(3))]%.")
 		else
@@ -168,7 +197,7 @@
 	shake_camera(user, 1, 1)
 	playsound(src, 'sound/magic/swap.ogg', 100, TRUE)
 	user.mind.add_sleep_experience(/datum/skill/craft/engineering, (user.STAINT / 2))
-	if(misfire_chance && prob(max(0, misfire_chance - user.goodluck(2) - skill)))
+	if(misfire_chance && prob(max(0, misfire_chance - user.goodluck(2) - skill)) && skill < 6) //legendary artificers dont misfire
 		misfire(O, user)
 	return
 
@@ -248,7 +277,7 @@
 	playsound(O, pick('sound/combat/hits/burn (1).ogg','sound/combat/hits/burn (2).ogg'), 100)
 	new /obj/effect/decal/cleanable/ash(turf)
 	O.moveToNullspace()
-	if(misfire_chance && prob(max(0, misfire_chance - user.goodluck(2) - skill)))
+	if(misfire_chance && prob(max(0, misfire_chance - user.goodluck(2) - skill)) && skill < 6) //legendary artificers dont misfire
 		misfire(O, user)
 	addtimer(CALLBACK(O, PROC_REF(popcorn_smelt_result), turf), 20)
 	return
