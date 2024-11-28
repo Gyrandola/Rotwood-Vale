@@ -23,6 +23,12 @@
     </a>
 </p>
 
+<div style="text-align: center;">
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/B0B716JS4E)
+
+</div>
+
 <div align="center">
 
 | Website                   | Link                                           |
