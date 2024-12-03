@@ -34,9 +34,8 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/amend_player_book,
 	/client/proc/pull_book_file_names,
 	/client/proc/adminwho,
-	// RATWOOD MODULAR START
 	/client/proc/bunker_bypass,
-	// RATWOOD MODULAR END
+	/client/proc/admin_add_supporter,
 	)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 GLOBAL_PROTECT(admin_verbs_admin)

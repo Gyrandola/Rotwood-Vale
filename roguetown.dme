@@ -2484,6 +2484,7 @@
 #include "modular\code\game\objects\items\clothes\strapless_dress.dm"
 #include "modular\code\game\objects\items\lewd\dildo.dm"
 #include "modular\code\modules\admin\bunker_bypass.dm"
+#include "modular\code\modules\admin\supporter.dm"
 #include "modular\code\modules\crafting\lewd\dildo_crafting.dm"
 #include "modular\code\modules\jobs\job_types\roguetown\roguetown.dm"
 #include "modular\code\modules\living\emote.dm"
