@@ -68,10 +68,10 @@ GLOBAL_LIST_INIT(noble_positions, list(
 	"Councillor",
 	"Steward",
 	"Knight",
+	"Court Magos",
 ))
 
 GLOBAL_LIST_INIT(courtier_positions, list(
-	"Court Magos",
 	"Court Physician",
 	"Jester",
 	"Head Butler",
@@ -123,7 +123,7 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Fisher",
 	"Lumberjack",
 	"Towner",
-	"Grabber",
+	"Henchman",
 	"Nightmaster",
 	"Prostitute",
 	"Docker",
