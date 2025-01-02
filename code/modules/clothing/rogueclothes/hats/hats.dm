@@ -51,7 +51,7 @@
 
 /obj/item/clothing/head/roguetown/roguehood/reinforced/newmoon
 	color = "#78a3c9"
-	
+
 
 /obj/item/clothing/head/roguetown/roguehood/shalal
 	name = "keffiyeh"
@@ -197,10 +197,14 @@
 
 /obj/item/clothing/head/roguetown/priestmask
 	name = "solar visage"
-	desc = "The sanctified helm of the most devoted. Thiefs beware."
+	desc = "The sanctified helm of the most devoted. Thieves beware."
 	color = null
 	icon_state = "priesthead"
 	item_state = "priesthead"
+	body_parts_covered = HEAD|HAIR|EARS|NECK
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+	armor = list("blunt" = 20, "slash" = 20, "stab" = 20, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_ASSASSIN)
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	dynamic_hair_suffix = ""
 
@@ -701,7 +705,7 @@
 	icon_state = "volfplate"
 	item_state = "volfplate"
 	adjustable = CAN_CADJUST
-	max_integrity = 300 
+	max_integrity = 300
 	emote_environment = 3
 	armor_class = ARMOR_CLASS_MEDIUM
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
@@ -1257,6 +1261,15 @@
 	clothing_flags = null
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
+
+/obj/item/clothing/head/roguetown/inqhat
+	name = "inquisitorial hat"
+	desc = "Redemption is your currency."
+	icon_state = "inqhat"
+	item_state = "inqhat"
+	sewrepair = TRUE
+
+
 
 //----------------- BLACKSTEEL ---------------------
 
