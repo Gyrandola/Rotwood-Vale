@@ -82,6 +82,8 @@ GLOBAL_LIST_EMPTY(ritualslist)
 			return FALSE
 		if(new_owner.assigned_role in GLOB.church_positions)
 			return FALSE
+		if(new_owner.assigned_role in GLOB.inquisition_positions)
+			return FALSE
 		if(new_owner.unconvertable)
 			return FALSE
 		if(new_owner.current && HAS_TRAIT(new_owner.current, TRAIT_MINDSHIELD))
@@ -564,7 +566,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		if(H.charflaw)
 			QDEL_NULL(H.charflaw)
 		H.update_body()
-		H.mob_biotypes = MOB_UNDEAD
+		H.mob_biotypes |= MOB_UNDEAD
 		H.faction = list("undead")
 
 		H.STASPD = rand(7,10)
@@ -576,7 +578,6 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		H.verbs |= /mob/living/carbon/human/proc/communicate
 
 		ADD_TRAIT(H, TRAIT_NOMOOD, TRAIT_GENERIC)
-		ADD_TRAIT(H, TRAIT_NOROGSTAM, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOLIMBDISABLE, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOHUNGER, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOBREATH, TRAIT_GENERIC)
@@ -613,7 +614,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 						return
 					if(istype(HL.wear_neck, /obj/item/clothing/neck/roguetown/psicross))
 						return
-					if(HAS_TRAIT(HL, TRAIT_NOROGSTAM))
+					if(HAS_TRAIT(HL, TRAIT_NOSLEEP) || HAS_TRAIT(HL, TRAIT_NOROGSTAM))
 						return
 					to_chat(HL.mind, span_warning("I'm so sleepy..."))
 					HL.SetSleeping(30)
